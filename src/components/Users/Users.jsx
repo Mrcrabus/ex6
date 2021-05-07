@@ -4,19 +4,18 @@ import * as axios from 'axios';
 
 let Users = (props) => {
 
-    let getUsers = () =>
-    {
-        if (props.users.length === 0) {
-            axios.get("https://reqres.in/api/users")
-                .then(response => {
-                    debugger;
-                    props.setUsers(response.data.data);
-                });
-        }
+
+    if (props.users.length === 0) {
+        axios.get("https://reqres.in/api/users?per_page=12")
+            .then(response => {
+                debugger;
+                props.setUsers(response.data.data);
+            });
     }
 
+
     return <div>
-        <button onClick={getUsers}>Get Users</button>
+
         <h1>Here</h1>
         {
             props.users.map(u => <div key={u.id}>
