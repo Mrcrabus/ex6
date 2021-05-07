@@ -26,7 +26,7 @@ const userReducers = (state = initialState, action) => {
     }
 }
 
-export const setUsers = (users) => ({type: SET_USERS, users})
+export const setUsersAC = (users) => ({type: SET_USERS, users})
 
 
 export default userReducers;
