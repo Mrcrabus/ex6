@@ -1,21 +1,12 @@
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
-    users: [
-    //     {
-    //     "id": 1,
-    //     "email": "george.bluth@reqres.in",
-    //     "first_name": "George",
-    //     "last_name": "Bluth",
-    //     "avatar": "https://reqres.in/img/faces/1-image.jpg"
-    // }, {
-    //     "id": 2,
-    //     "email": "janet.weaver@reqres.in",
-    //     "first_name": "Janet",
-    //     "last_name": "Weaver",
-    //     "avatar": "https://reqres.in/img/faces/2-image.jpg"
-    // }
-    ]
+    users: [],
+    pageSize: 6,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 const userReducers = (state = initialState, action) => {
@@ -23,12 +14,20 @@ const userReducers = (state = initialState, action) => {
         case SET_USERS: {
             return {...state, users: action.users}
         }
+        case SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.currentPage}
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.totalUsersCount}
+        }
         default:
             return state
     }
 }
 
 export const setUsersAC = (users) => ({type: SET_USERS, users})
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
 
 
 export default userReducers;
